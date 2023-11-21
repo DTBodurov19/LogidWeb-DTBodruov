@@ -1,0 +1,105 @@
+﻿@model Logid_Web.Models.StockModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e2ecf6;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #4285f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #c5d9ea;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+            .form-control:focus {
+                outline: none;
+                border-color: #4285f4;
+                box-shadow: 0 0 4px rgba(66, 133, 244, 0.5);
+            }
+
+        .btn-primary {
+            background-color: #4285f4;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #3367d6;
+            }
+
+        .error-message {
+            color: #cc0000;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: #007e33;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: #4285f4;">Create New Client</h2>
+
+        @using (Html.BeginForm("StockCreate", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+         
+
+            <div class="form-group">
+                <label for="Unit_price">Unit Price</label>
+                @Html.TextBoxFor(model => model.Unit_price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Unit_price, "", new { @class = "error-message" })
+            </div>
+
+
+            
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</body>
+</html>
